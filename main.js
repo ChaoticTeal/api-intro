@@ -79,17 +79,79 @@ function updateUI(pokemonObj) {
  * use an arrow function
  */
 
+const randNumGenerator = (lower, upper) => {
+    // The number of possible values we could return
+    let range = upper - lower;
+    // go through our usual procedure for generating a random integer
+    // Results in the range [lower-upper)
+    return Math.floor(Math.random() * range) + lower;
+}
+
 /**
  * @NOTE often times when you use an API, you'll need to "clean"
  * the data. data from API comes with a lot of information and
  * cleaning the data means trimming it down to only the things
  * you need.
  * 
- * @TODO create a function called getPokemon which:
+ * @TODO create a function called loadPokemon which:
  *      - calls the PokeAPI to get a random Pokemon
  *      - cleans the raw Pokemon data to be usable
  *      - updates the UI accordingly
  */
+function loadPokemon(pokedexID) {
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokedexID}`;
+    // Use the built-in fetch function to call an API
+    fetch(url)
+        // use a callback function to process data when it comes in
+        // Don't end with a semicolon for to use a callback after!
+        .then(function(response){
+            // HTTP Response, not the data we're going for
+            // console.log(response);
+
+            // Pokémon JSON data, what we're going for
+            // Returning from the callback function, not loadPokemon
+            return response.json();
+        })
+        // Use another callback to use data after it comes through
+        .then(function(jsonData) {
+            // The actual data we want to use, from the first callback
+            // console.log(jsonData);
+
+            /**
+             * Clean Pokémon data. final object should look like: 
+             * 
+             * {
+             *  id: dex number,
+             *  name: name,
+             *  image: the url of the sprite (front_default),
+             *  base {
+             *      hp: hp;
+             *      atk: base attack;
+             *      def: base defense;
+             *      sp_atk: base special attack;
+             *      sp_def: base special defense;
+             *      spd: base speed
+             *  }
+             * }
+             */
+
+            let pokemon = {
+                id: jsonData.id,
+                name: jsonData.name,
+                image: jsonData.sprites.other.home.front_default,
+                base: {
+                    hp: jsonData.stats[0].base_stat,
+                    atk: jsonData.stats[1].base_stat,
+                    def: jsonData.stats[2].base_stat,
+                    sp_atk: jsonData.stats[3].base_stat,
+                    sp_def: jsonData.stats[4].base_stat,
+                    spd: jsonData.stats[5].base_stat
+                }
+            };
+
+            updateUI(pokemon);
+        })
+}
 
 /**
  * @TODO create an event handler for #random_btn which:
@@ -98,3 +160,22 @@ function updateUI(pokemonObj) {
  *      - gets a random Pokedex number within that generation range
  *      - gets and loads the data of a Pokemon with the specified Pokedex number
  */
+
+let randomButton = document.querySelector("#random_btn");
+randomButton.onclick = function(event) {
+    event.preventDefault();
+
+    // Get the element with a checked radio option
+    let selectedOption = document.querySelector("input[name='generation']:checked");
+    // Get the value of said element, cast as a number
+    let generation = Number(selectedOption.value);
+
+    // Use the generationRange switch to get the selected generation's upper and lower bounds
+    let genRange = getGenerationRange(generation);
+
+    // Get a random dex ID
+    let randomDexNumber = randNumGenerator(genRange.lower, genRange.upper);
+
+    // Call the API!
+    loadPokemon(randomDexNumber);
+}
