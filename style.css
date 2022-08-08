@@ -1,0 +1,77 @@
+body {
+    background-color: #888888;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000;
+}
+
+#poke_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#poke_img {
+    width: 50%;
+}
+
+#poke_stats {
+    width: 400px;
+    height: 215px;
+    text-align: left;
+    padding: 5px 0;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+#poke_stats div {
+    height: 20px;
+    margin: 5px 0;
+    padding: 5px;
+    text-shadow: 2px 2px #000000;
+    transition: 0.25s;
+}
+
+#hp {
+    width: 272px;
+    background-color: #00ff00;
+}
+
+#atk {
+    width: 220px;
+    background-color: #ff0000;
+}
+
+#def {
+    width: 220px;
+    background-color: #0000ff;
+}
+
+#sp_atk {
+    width: 200px;
+    background-color: #ff8800;
+}
+
+#sp_def {
+    width: 200px;
+    background-color: #8800ff;
+}
+
+#spd {
+    width: 168px;
+    background-color: #00ffff;
+}
+
+#random_btn {
+    width: 10%;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 5px;
+    border: none;
+}
+
+#random_btn:hover {
+    transition: 0.25s;
+    background-color: #bbbbbb;
+}
