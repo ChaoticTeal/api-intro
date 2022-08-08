@@ -37,28 +37,47 @@ function getGenerationRange(genNum) {
 
         case 8:
             return { lower: 810, upper: 906 };
+
+        case 0:
+            return { lower: 1, upper: 906 };
     }
 }
 
 /**
- * @NOTE this is function very similar to randNumGenerator seen in
- * the week1 milestone. i've modified it a bit so that it takes
- * two parameters (lower and upper) and returns a random integer
- * between [lower, upper)
+ * @NOTE i moved the code to update the UI from out json code along into a function.
+ * since JSON and objects are interchangeable in JS it was extremely flexible. the
+ * only major difference is that widths of stat bars are normalized to the 1-255
+ * range since pokemon like Blissey have a max base stat.
  */
-function randNumGenerator(lower, upper) {
-    // the number of possible choices to make
-    let possibleChoices = upper - lower;
+function updateUI(pokemonObj) {
+    // Get a reference to the heading and set it to the pokemon's id (dex #) and name
+    let nameHeading = document.querySelector("#poke_name");
+    nameHeading.innerHTML = `#${pokemonObj.id} - ${pokemonObj.name.toUpperCase()}`;
 
-    // generate a number between [0, possibleChoices)
-    let result = Math.random() * possibleChoices;
+    // Get a reference to the image and set the src to the pokemon's image
+    let pokeImg = document.querySelector("#poke_img");
+    pokeImg.src = pokemonObj.image;
 
-    // shift the interval to start at lower
-    result += lower;
+    // Get a list of stat bars
+    let statDivs = document.querySelectorAll("#poke_stats div");
 
-    // return the floored result to get an integer
-    return Math.floor(result);
+    // and loop through them to change their width
+    for (let i = 0; i < statDivs.length; i++) {
+        // Get the id of the current stat bar, which we can use to get the pokemons's corresponding stat
+        let stat = statDivs[i].id;
+
+        // Set the current stat bar's width to normalized base state width
+        // This uses bracket notation for accessing an object's properties--since the contents of the
+        // brackets are strings, we can use a variable
+        statDivs[i].style["width"] = `${pokemonObj.base[stat] / 255 * 100}%`;
+    }
 }
+
+/**
+ * @TODO create a function called randNumGenerator which takes two parameters
+ * (lower and upper) and returns a random integer  between [lower, upper).
+ * use an arrow function
+ */
 
 /**
  * @NOTE often times when you use an API, you'll need to "clean"
@@ -69,13 +88,7 @@ function randNumGenerator(lower, upper) {
  * @TODO create a function called getPokemon which:
  *      - calls the PokeAPI to get a random Pokemon
  *      - cleans the raw Pokemon data to be usable
- *      - updates the UI according
- */
-
-/**
- * @TODO create a function called updateUI which takes one parameter
- * (a pokemon object as created in getPokemon) and updates the UI of the
- * website accordingly. use an arrow function. 
+ *      - updates the UI accordingly
  */
 
 /**

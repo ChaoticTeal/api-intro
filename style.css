@@ -13,14 +13,14 @@ body {
 }
 
 #poke_img {
-    width: 50%;
+    width: 20vw;
 }
 
 #poke_stats {
-    width: 400px;
-    height: 215px;
+    width: 40vw;;
+    height: 23vh;
     text-align: left;
-    padding: 5px 0;
+    padding: 5px 10px 5px 0px;
     background-color: #ffffff;
     border-radius: 5px;
 }
@@ -29,37 +29,36 @@ body {
     height: 20px;
     margin: 5px 0;
     padding: 5px;
-    text-shadow: 2px 2px #000000;
     transition: 0.25s;
 }
 
 #hp {
-    width: 272px;
+    width: 26.67%;
     background-color: #00ff00;
 }
 
 #atk {
-    width: 220px;
+    width: 21.57%;
     background-color: #ff0000;
 }
 
 #def {
-    width: 220px;
+    width: 21.57%;
     background-color: #0000ff;
 }
 
 #sp_atk {
-    width: 200px;
+    width: 19.61%;
     background-color: #ff8800;
 }
 
 #sp_def {
-    width: 200px;
+    width: 19.61%;
     background-color: #8800ff;
 }
 
 #spd {
-    width: 168px;
+    width: 16.47%;
     background-color: #00ffff;
 }
 

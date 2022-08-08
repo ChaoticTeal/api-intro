@@ -16,12 +16,13 @@
 </head>
 
 <body>
-    <h1 id="poke_name">#722 - Rowlet</h1>
+    <h1 id="poke_name">#722 - ROWLET</h1>
     <div id="poke_content">
         <div id="poke_preview">
-            <img id="poke_img"
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/722.png" />
-            <h3 id="poke_types">grass/flying type</h3>
+            <img
+                id="poke_img"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/722.png"
+            />
         </div>
         <div>
             <h2>Base Stats</h2>
@@ -88,6 +89,12 @@
                 <label>Generation 8 (Pokedex 810 - 905)</label>
             </div>
 
+            <!--
+                @NOTE using 0 as a something called a sentinel value here.
+                there will never be a generation 0 in pokemon so i use it
+                as an "extra" option. it's common to use sentinel values
+                like 0 or -1 for things that never occur or special cases.
+            -->
             <div class="radio_container">
                 <input type="radio" name="generation" value="0" />
                 <label>All Generations</label>
