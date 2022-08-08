@@ -75,3 +75,20 @@ body {
     transition: 0.25s;
     background-color: #bbbbbb;
 }
+
+#poke_form {
+    display: flex;
+    justify-content: center;
+    margin: 2vw;
+}
+
+#generation_list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio_container {
+    font-size: 1.2em;
+}

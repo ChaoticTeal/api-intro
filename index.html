@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"/>
-    <title>Data Time!</title>
+
+    <!-- @NOTE linking our CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- @NOTE linking our JS with defer -->
     <script src="main.js" defer></script>
+
+    <title>Data Time!</title>
 </head>
+
 <body>
     <h1 id="poke_name">#722 - Rowlet</h1>
     <div id="poke_content">
         <div id="poke_preview">
-            <img id="poke_img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/722.png"/>
+            <img id="poke_img"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/722.png" />
             <h3 id="poke_types">grass/flying type</h3>
         </div>
         <div>
@@ -27,6 +35,69 @@
             </div>
         </div>
     </div>
-    <button id="random_btn">Random Starter</button>
+
+    <!-- @NOTE using a form here to specify the generation selected -->
+    <form id="poke_form">
+        <div id="generation_list">
+            <!-- 
+                @NOTE using a special type of input called a radio
+                to select from a list of predefined values. the names
+                are all the same so I can mass refer to them with
+                querySelector. important: the values are preset.
+
+                the radio containers aren't necessary, but help with styling
+                with flexbox
+            -->
+            <div class="radio_container">
+                <input type="radio" name="generation" value="1" />
+                <label>Generation 1 (Pokedex 1 - 151)</label>
+            </div>
+
+            <div class="radio_container">
+                <input type="radio" name="generation" value="2" />
+                <label>Generation 2 (Pokedex 152 - 251)</label>
+            </div>
+
+            <div class="radio_container">
+                <input type="radio" name="generation" value="3" />
+                <label>Generation 3 (Pokedex 252 - 386)</label>
+            </div>
+
+            <div class="radio_container">
+                <input type="radio" name="generation" value="4" />
+                <label>Generation 4 (Pokedex 387 - 493)</label>
+            </div>
+
+            <div class="radio_container">
+                <input type="radio" name="generation" value="5" />
+                <label>Generation 5 (Pokedex 494 - 649)</label>
+            </div>
+
+            <div class="radio_container">
+                <input type="radio" name="generation" value="6" />
+                <label>Generation 6 (Pokedex 650 - 721)</label>
+            </div>
+
+            <div class="radio_container">
+                <input type="radio" name="generation" value="7" />
+                <label>Generation 7 (Pokedex 722 - 809)</label>
+            </div>
+
+            <div class="radio_container">
+                <input type="radio" name="generation" value="8" />
+                <label>Generation 8 (Pokedex 810 - 905)</label>
+            </div>
+
+            <div class="radio_container">
+                <input type="radio" name="generation" value="0" />
+                <label>All Generations</label>
+            </div>
+        </div>
+
+        <button id="random_btn">Random Pokemon</button>
+    </form>
+
+
 </body>
+
 </html>
